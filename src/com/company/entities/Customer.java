@@ -16,7 +16,7 @@ public final class Customer extends Person {
         this.problem = problem;
     }
 
-    public ArrayList<Thing> getMyBucket(){
+    public ArrayList<Thing> getBucket(){
         return bucket;
     }
 
@@ -28,7 +28,7 @@ public final class Customer extends Person {
         bucket.remove(thing);
     }
 
-    public void GiveMoney(double thing_price){
+    public void giveMoney(double thing_price){
         this.account -= thing_price;
     }
 
@@ -39,8 +39,6 @@ public final class Customer extends Person {
     public void setProblem(Problems problem){
         this.problem = problem;
     }
-
-
 
     @Override
     public String toString(){

@@ -16,22 +16,25 @@ public final class SellBuyService {
     }
 
     public void buying(){
-        for (Thing th: customer.getMyBucket()){
-            customer.GiveMoney(th.getPrice());
+        ArrayList<Thing> bucket = customer.getBucket();
+
+        for (Thing th: bucket){
+            double price = th.getPrice();
+            customer.giveMoney(price);
             for (Seller s: sellers){
-                if (s.getClothing().contains(th)){
-                    s.GetMoney(th.getPrice());
-                    s.getClothing().remove(th);
+                ArrayList<Thing> clothing = s.getClothing();
+                if (!clothing.contains(th)) {
+                    continue;
                 }
+                s.getMoney(price);
+                clothing.remove(th);
             }
         }
-        customer.getMyBucket().clear();
-         System.out.println("Customer " + customer.getFirstName() + " " +
-                customer.getLastName() + " bought clothes from her bucket.");
+        bucket.clear();
     }
 
     @Override
     public String toString(){
-        return "SellBuyService helps sellers and customers doing transactions.";
+        return customer.getFirstName() + " " + customer.getLastName() + " bought clothes from her bucket.";
     }
 }

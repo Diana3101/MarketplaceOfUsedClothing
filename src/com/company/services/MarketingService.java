@@ -6,22 +6,25 @@ import com.company.entities.SellerWish;
 import com.company.entities.Staff;
 
 public final class MarketingService {
-    private final Staff CAManager;
-    private final Staff SEOSpecialist;
+    private final Staff CaManager;
+    private final Staff SeoSpecialist;
 
-    public MarketingService(Staff CAManager, Staff SEOSpecialist) {
-        this.CAManager = CAManager;
-        this.SEOSpecialist = SEOSpecialist;
+    public MarketingService(Staff CaManager, Staff SeoSpecialist) {
+        this.CaManager = CaManager;
+        this.SeoSpecialist = SeoSpecialist;
     }
 
-    public void installTargeting(Seller seller){
-        System.out.println(this.CAManager.getPosition() + " " + this.CAManager.getFirstName() + " helped seller with " + seller.getWish() + ".");
+    public String installTargeting(Seller seller){
+        SellerWish wish = seller.getWish();
         seller.setWish(SellerWish.None);
+        return this.CaManager.getPosition() + " " + this.CaManager.getFirstName() + " helped seller with " + wish + ".";
     }
 
-    public void Promotion(Seller seller){
-        System.out.println(this.SEOSpecialist.getPosition() + " " + this.SEOSpecialist.getFirstName() + " helped seller with " + seller.getWish() + ".");
+    public String promotion(Seller seller){
+        SellerWish wish = seller.getWish();
         seller.setWish(SellerWish.None);
+        return this.SeoSpecialist.getPosition() + " " + this.SeoSpecialist.getFirstName() + " helped seller with " + wish + ".";
+
     }
 
     @Override

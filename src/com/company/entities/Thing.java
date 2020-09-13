@@ -27,5 +27,4 @@ public final class Thing {
         return "ID: " + id + "; thing name: " + name + "; condition: "+ condition + "; size: "
                 + size + "; price: " + price + ".";
     }
-
 }

@@ -18,7 +18,7 @@ public final class Seller extends Person {
         return clothing;
     }
 
-    public void GetMoney(double thing_price){
+    public void getMoney(double thing_price){
         this.account += thing_price;
     }
 

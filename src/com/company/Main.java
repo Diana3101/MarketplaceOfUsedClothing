@@ -1,7 +1,7 @@
 package com.company;
 
 import com.company.entities.*;
-import com.company.services.ITService;
+import com.company.services.ItService;
 import com.company.services.MarketingService;
 import com.company.services.SellBuyService;
 
@@ -41,13 +41,18 @@ public class Main {
         Staff CAmanager = new Staff("Nadya", "Korobska", 500, "CA Manager");
         Staff SEOspecialist = new Staff("Nikolay", "Sobolev", 650, "SEO-specialist");
 
-        ITService itService = new ITService(webdeveloper, webdesigner, appdeveloper);
-        itService.fixApp(customer1);
-        itService.fixInterface(customer2);
+        ItService itService = new ItService(webdeveloper, webdesigner, appdeveloper);
+
+        System.out.println(itService.fixApp(customer1));
+        System.out.println(itService.fixInterface(customer2));
+
+        customer1.setProblem(Problems.WebsiteSlowsDown);
+        System.out.println(itService.fixSite(customer1));
 
         MarketingService marketingService = new MarketingService(CAmanager, SEOspecialist);
-        marketingService.installTargeting(seller2);
-        marketingService.Promotion(seller3);
+
+        System.out.println(marketingService.installTargeting(seller2));
+        System.out.println(marketingService.promotion(seller3));
 
         ArrayList<Seller> sellersForTransaction1 = new ArrayList<>(Arrays.asList(seller1, seller2));
         ArrayList<Seller> sellersForTransaction2 = new ArrayList<>(Arrays.asList(seller1, seller2, seller3));
@@ -57,6 +62,9 @@ public class Main {
 
         transaction1.buying();
         transaction2.buying();
+
+        System.out.println(transaction1.toString());
+        System.out.println(transaction2.toString());
 
     }
 }
